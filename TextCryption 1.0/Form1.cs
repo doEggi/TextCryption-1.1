@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Globalization;
 
 namespace TextCryption_1._0
 {
@@ -21,11 +22,15 @@ namespace TextCryption_1._0
         string savePath = "";
         string mode = "load";
         bool blocksound = false;
+        string lang = "de";
 
         public Form1()
         {
             InitializeComponent();
             ftd_font.Font = txb_text.Font;
+
+            if (!CultureInfo.CurrentCulture.Name.Contains("de"))
+                lang = "en";
 
             if(Program.Arguments.Length > 0)
             {
@@ -51,7 +56,11 @@ namespace TextCryption_1._0
 
             tls.Enabled = false;
             pnl_password.Visible = true;
-            tssl_status.Text = "Passwort eingeben und mit ENTER bestätigen";
+
+            if(lang == "de")
+                tssl_status.Text = "Passwort eingeben und mit ENTER bestätigen";
+            else
+                tssl_status.Text = "Enter password and confirm with ENTER";
         }
 
         private void chb_showPassword_CheckedChanged(object sender, EventArgs e)
@@ -59,7 +68,7 @@ namespace TextCryption_1._0
             txb_password.UseSystemPasswordChar = !chb_showPassword.Checked;
         }
 
-        static string Decrypt(byte[] enc, string pw_)
+        string Decrypt(byte[] enc, string pw_)
         {
             try
             {
@@ -75,12 +84,15 @@ namespace TextCryption_1._0
             }
             catch
             {
-                MessageBox.Show("Das angegebene Passwort ist falsch!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(lang == "de")
+                    MessageBox.Show("Das angegebene Passwort ist falsch!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("The given password is wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "|||||PW-ERROR|||||";
             }
         }
 
-        static byte[] Encrypt(string dec, string pw_)
+        byte[] Encrypt(string dec, string pw_)
         {
             byte[] text = Encoding.Default.GetBytes(dec);
             byte[] pw = Encoding.Default.GetBytes(pw_);
@@ -116,19 +128,29 @@ namespace TextCryption_1._0
                     tls.Enabled = true;
                     if (fileDec == "|||||PW-ERROR|||||")
                     {
-                        tssl_status.Text = "Falsches Passwort bei Datei: " + Path.GetFileName(ofd_open.FileName);
+                        if(lang == "de")
+                            tssl_status.Text = "Falsches Passwort bei Datei: " + Path.GetFileName(ofd_open.FileName);
+                        else
+                            tssl_status.Text = "Wrong password for file: " + Path.GetFileName(ofd_open.FileName);
                         return;
                     }
 
                     fileLoaded = true;
                     savePath = ofd_open.FileName;
                     txb_text.Text = fileDec;
-                    tssl_status.Text = "Datei \"" + Path.GetFileName(savePath) + "\" wurde erfolgreich geladen";
+
+                    if(lang == "de")
+                        tssl_status.Text = "Datei \"" + Path.GetFileName(savePath) + "\" wurde erfolgreich geladen";
+                    else
+                        tssl_status.Text = "File \"" + Path.GetFileName(savePath) + "\" was loaded successfully";
                 }
                 else
-            {
-                MessageBox.Show("Das Passwort muss länger als 4 Zeichen sein!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                {
+                    if(lang == "de")
+                        MessageBox.Show("Das Passwort muss länger als 4 Zeichen sein!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("The password must be longer than 4 characters!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if(mode == "save")
             {
@@ -147,11 +169,18 @@ namespace TextCryption_1._0
                     fileLoaded = true;
                     savePath = sfd_safeAt.FileName;
                     File.WriteAllBytes(savePath, fileEnc);
-                    tssl_status.Text = "Datei \"" + Path.GetFileName(savePath) + "\" wurde erfolgreich gespeichert";
+
+                    if(lang == "de")
+                        tssl_status.Text = "Datei \"" + Path.GetFileName(savePath) + "\" wurde erfolgreich gespeichert";
+                    else
+                        tssl_status.Text = "File \"" + Path.GetFileName(savePath) + "\" was saved successfully";
                 }
                 else
                 {
-                    MessageBox.Show("Das Passwort muss länger als 4 Zeichen sein!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (lang == "de")
+                        MessageBox.Show("Das Passwort muss länger als 4 Zeichen sein!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("The password must be longer than 4 characters!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 mode = "load";
@@ -163,7 +192,11 @@ namespace TextCryption_1._0
             if (fileLoaded)
             {
                 File.WriteAllBytes(savePath, Encrypt(txb_text.Text, password));
-                tssl_status.Text = "Datei \"" + Path.GetFileName(savePath) + "\" erfolgreich gespeichert";
+
+                if(lang == "de")
+                    tssl_status.Text = "Datei \"" + Path.GetFileName(savePath) + "\" erfolgreich gespeichert";
+                else
+                    tssl_status.Text = "File \"" + Path.GetFileName(savePath) + "\" saved successfully";
             }
             else
             {
@@ -182,9 +215,14 @@ namespace TextCryption_1._0
 
         private void tsb_close_Click(object sender, EventArgs e)
         {
-            if(tssl_status.Text.Contains("  *"))
-                if (MessageBox.Show("Soll die Datei wirklich geschlossen werden?", "Schließen", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    return;
+            if(lang == "de")
+                if(tssl_status.Text.Contains("  *"))
+                    if (MessageBox.Show("Soll die Datei wirklich geschlossen werden?", "Schließen", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        return;
+            if(lang == "en")
+                if (tssl_status.Text.Contains("  *"))
+                    if (MessageBox.Show("Are you sure you want to close the file?", "Close", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        return;
 
             byte[] fileEnc = null;
             string fileDec = "";
@@ -192,7 +230,10 @@ namespace TextCryption_1._0
             string password = "";
             string savePath = "";
             txb_text.Text = "";
-            tssl_status.Text = "Keine Datei geöffnet";
+            if(lang == "de")
+                tssl_status.Text = "Keine Datei geöffnet";
+            else
+                tssl_status.Text = "No file opened";
         }
 
         private void tsb_import_Click(object sender, EventArgs e)
@@ -249,7 +290,13 @@ namespace TextCryption_1._0
         {
             if(tssl_status.Text.Contains("  *") & fileLoaded)
             {
-                DialogResult dr = MessageBox.Show("Es gibt ungespeicherte Änderungen...\nSoll die geöffnete Datei gespeichert werden?", "Schließen", MessageBoxButtons.YesNoCancel);
+                DialogResult dr;
+
+                if(lang == "de")
+                    dr= MessageBox.Show("Es gibt ungespeicherte Änderungen...\nSoll die geöffnete Datei gespeichert werden?", "Schließen", MessageBoxButtons.YesNoCancel);
+                else
+                    dr = MessageBox.Show("There are unsaved changes... \nDo you want to save the open file? ", "Close", MessageBoxButtons.YesNoCancel);
+
                 if (dr == DialogResult.Yes)
                 {
                     tsb_save_Click(null, null);

@@ -37,6 +37,7 @@ namespace TextCryption_1._0
             this.tsb_save = new System.Windows.Forms.ToolStripButton();
             this.tsb_saveAll = new System.Windows.Forms.ToolStripButton();
             this.tsb_import = new System.Windows.Forms.ToolStripButton();
+            this.tsb_font = new System.Windows.Forms.ToolStripButton();
             this.tsb_close = new System.Windows.Forms.ToolStripButton();
             this.txb_text = new System.Windows.Forms.TextBox();
             this.ofd_open = new System.Windows.Forms.OpenFileDialog();
@@ -47,7 +48,6 @@ namespace TextCryption_1._0
             this.sfd_safeAt = new System.Windows.Forms.SaveFileDialog();
             this.ofd_textFiles = new System.Windows.Forms.OpenFileDialog();
             this.ftd_font = new System.Windows.Forms.FontDialog();
-            this.tsb_font = new System.Windows.Forms.ToolStripButton();
             this.sts.SuspendLayout();
             this.tls.SuspendLayout();
             this.pnl_password.SuspendLayout();
@@ -55,32 +55,22 @@ namespace TextCryption_1._0
             // 
             // sts
             // 
-            this.sts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sts.AutoSize = false;
+            resources.ApplyResources(this.sts, "sts");
             this.sts.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.sts.Dock = System.Windows.Forms.DockStyle.None;
             this.sts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssl_status});
-            this.sts.Location = new System.Drawing.Point(0, 425);
             this.sts.Name = "sts";
             this.sts.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.sts.Size = new System.Drawing.Size(797, 22);
-            this.sts.TabIndex = 1;
             // 
             // tssl_status
             // 
+            resources.ApplyResources(this.tssl_status, "tssl_status");
             this.tssl_status.Name = "tssl_status";
-            this.tssl_status.Size = new System.Drawing.Size(114, 17);
-            this.tssl_status.Text = "Keine Datei geöffnet";
             // 
             // tls
             // 
-            this.tls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tls.AutoSize = false;
+            resources.ApplyResources(this.tls, "tls");
             this.tls.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tls.Dock = System.Windows.Forms.DockStyle.None;
             this.tls.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tls.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsb_open,
@@ -89,162 +79,106 @@ namespace TextCryption_1._0
             this.tsb_import,
             this.tsb_font,
             this.tsb_close});
-            this.tls.Location = new System.Drawing.Point(-1, -1);
             this.tls.Name = "tls";
             this.tls.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tls.Size = new System.Drawing.Size(798, 25);
-            this.tls.TabIndex = 2;
             // 
             // tsb_open
             // 
-            this.tsb_open.Image = ((System.Drawing.Image)(resources.GetObject("tsb_open.Image")));
-            this.tsb_open.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.tsb_open, "tsb_open");
             this.tsb_open.Name = "tsb_open";
-            this.tsb_open.Size = new System.Drawing.Size(64, 22);
-            this.tsb_open.Text = "Öffnen\t";
-            this.tsb_open.ToolTipText = "Öffnen";
             this.tsb_open.Click += new System.EventHandler(this.tsb_open_Click);
             // 
             // tsb_save
             // 
-            this.tsb_save.Image = ((System.Drawing.Image)(resources.GetObject("tsb_save.Image")));
-            this.tsb_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.tsb_save, "tsb_save");
             this.tsb_save.Name = "tsb_save";
-            this.tsb_save.Size = new System.Drawing.Size(79, 22);
-            this.tsb_save.Text = "Speichern";
             this.tsb_save.Click += new System.EventHandler(this.tsb_save_Click);
             // 
             // tsb_saveAll
             // 
-            this.tsb_saveAll.Image = ((System.Drawing.Image)(resources.GetObject("tsb_saveAll.Image")));
-            this.tsb_saveAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.tsb_saveAll, "tsb_saveAll");
             this.tsb_saveAll.Name = "tsb_saveAll";
-            this.tsb_saveAll.Size = new System.Drawing.Size(119, 22);
-            this.tsb_saveAll.Text = "Speichern unter...";
             this.tsb_saveAll.Click += new System.EventHandler(this.tsb_saveAll_Click);
             // 
             // tsb_import
             // 
-            this.tsb_import.Image = ((System.Drawing.Image)(resources.GetObject("tsb_import.Image")));
-            this.tsb_import.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.tsb_import, "tsb_import");
             this.tsb_import.Name = "tsb_import";
-            this.tsb_import.Size = new System.Drawing.Size(98, 22);
-            this.tsb_import.Text = "Importieren...";
             this.tsb_import.Click += new System.EventHandler(this.tsb_import_Click);
+            // 
+            // tsb_font
+            // 
+            resources.ApplyResources(this.tsb_font, "tsb_font");
+            this.tsb_font.Name = "tsb_font";
+            this.tsb_font.Click += new System.EventHandler(this.tsb_font_Click);
             // 
             // tsb_close
             // 
-            this.tsb_close.Image = ((System.Drawing.Image)(resources.GetObject("tsb_close.Image")));
-            this.tsb_close.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.tsb_close, "tsb_close");
             this.tsb_close.Name = "tsb_close";
-            this.tsb_close.Size = new System.Drawing.Size(78, 22);
-            this.tsb_close.Text = "Schließen\t";
             this.tsb_close.Click += new System.EventHandler(this.tsb_close_Click);
             // 
             // txb_text
             // 
             this.txb_text.AcceptsTab = true;
-            this.txb_text.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.txb_text, "txb_text");
             this.txb_text.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txb_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_text.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_text.Location = new System.Drawing.Point(2, 28);
-            this.txb_text.Multiline = true;
             this.txb_text.Name = "txb_text";
-            this.txb_text.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txb_text.Size = new System.Drawing.Size(792, 395);
-            this.txb_text.TabIndex = 3;
             this.txb_text.TextChanged += new System.EventHandler(this.txb_text_TextChanged);
             this.txb_text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_text_KeyDown);
             this.txb_text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_text_KeyPress);
             // 
             // ofd_open
             // 
-            this.ofd_open.Filter = "Verschlüsselte Textdateien|*.enct";
-            this.ofd_open.Title = "Verschlüsselte Datei öffnen...";
+            resources.ApplyResources(this.ofd_open, "ofd_open");
             // 
             // pnl_password
             // 
-            this.pnl_password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pnl_password, "pnl_password");
             this.pnl_password.Controls.Add(this.chb_showPassword);
             this.pnl_password.Controls.Add(this.txb_password);
             this.pnl_password.Controls.Add(this.lbl_titlePassword);
-            this.pnl_password.Location = new System.Drawing.Point(2, 28);
             this.pnl_password.Name = "pnl_password";
-            this.pnl_password.Size = new System.Drawing.Size(792, 395);
-            this.pnl_password.TabIndex = 4;
-            this.pnl_password.Visible = false;
             // 
             // chb_showPassword
             // 
-            this.chb_showPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chb_showPassword.AutoSize = true;
-            this.chb_showPassword.Location = new System.Drawing.Point(240, 202);
+            resources.ApplyResources(this.chb_showPassword, "chb_showPassword");
             this.chb_showPassword.Name = "chb_showPassword";
-            this.chb_showPassword.Size = new System.Drawing.Size(115, 17);
-            this.chb_showPassword.TabIndex = 2;
-            this.chb_showPassword.Text = "Passwort anzeigen";
             this.chb_showPassword.UseVisualStyleBackColor = true;
             this.chb_showPassword.CheckedChanged += new System.EventHandler(this.chb_showPassword_CheckedChanged);
             // 
             // txb_password
             // 
-            this.txb_password.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.txb_password, "txb_password");
             this.txb_password.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txb_password.Location = new System.Drawing.Point(240, 176);
             this.txb_password.Name = "txb_password";
-            this.txb_password.Size = new System.Drawing.Size(374, 20);
-            this.txb_password.TabIndex = 1;
             this.txb_password.UseSystemPasswordChar = true;
             this.txb_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_password_KeyPress);
             // 
             // lbl_titlePassword
             // 
-            this.lbl_titlePassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_titlePassword.AutoSize = true;
-            this.lbl_titlePassword.Location = new System.Drawing.Point(178, 179);
+            resources.ApplyResources(this.lbl_titlePassword, "lbl_titlePassword");
             this.lbl_titlePassword.Name = "lbl_titlePassword";
-            this.lbl_titlePassword.Size = new System.Drawing.Size(56, 13);
-            this.lbl_titlePassword.TabIndex = 0;
-            this.lbl_titlePassword.Text = "Passwort: ";
             // 
             // sfd_safeAt
             // 
-            this.sfd_safeAt.Filter = "Verschlüsselte Textdateien|*.enct";
-            this.sfd_safeAt.Title = "Datei speichern unter...";
+            resources.ApplyResources(this.sfd_safeAt, "sfd_safeAt");
             // 
             // ofd_textFiles
             // 
-            this.ofd_textFiles.Filter = "Textdatei|*.txt";
-            this.ofd_textFiles.Title = "Textdatei importieren...";
-            // 
-            // tsb_font
-            // 
-            this.tsb_font.Image = ((System.Drawing.Image)(resources.GetObject("tsb_font.Image")));
-            this.tsb_font.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsb_font.Name = "tsb_font";
-            this.tsb_font.Size = new System.Drawing.Size(75, 22);
-            this.tsb_font.Text = "Schriftart";
-            this.tsb_font.Click += new System.EventHandler(this.tsb_font_Click);
+            resources.ApplyResources(this.ofd_textFiles, "ofd_textFiles");
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(796, 447);
             this.Controls.Add(this.pnl_password);
             this.Controls.Add(this.txb_text);
             this.Controls.Add(this.tls);
             this.Controls.Add(this.sts);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(310, 200);
             this.Name = "Form1";
-            this.Text = "TextCryption 1.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.sts.ResumeLayout(false);
             this.sts.PerformLayout();
