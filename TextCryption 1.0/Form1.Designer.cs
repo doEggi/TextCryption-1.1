@@ -38,8 +38,8 @@ namespace TextCryption_1._0
             this.tsb_saveAll = new System.Windows.Forms.ToolStripButton();
             this.tsb_import = new System.Windows.Forms.ToolStripButton();
             this.tsb_close = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsb_info = new System.Windows.Forms.ToolStripButton();
+            this.tsb_settings = new System.Windows.Forms.ToolStripButton();
             this.txb_text = new System.Windows.Forms.TextBox();
             this.ofd_open = new System.Windows.Forms.OpenFileDialog();
             this.pnl_password = new System.Windows.Forms.Panel();
@@ -48,8 +48,6 @@ namespace TextCryption_1._0
             this.lbl_titlePassword = new System.Windows.Forms.Label();
             this.sfd_safeAt = new System.Windows.Forms.SaveFileDialog();
             this.ofd_textFiles = new System.Windows.Forms.OpenFileDialog();
-            this.ftd_font = new System.Windows.Forms.FontDialog();
-            this.cld_color = new System.Windows.Forms.ColorDialog();
             this.sts.SuspendLayout();
             this.tls.SuspendLayout();
             this.pnl_password.SuspendLayout();
@@ -81,7 +79,7 @@ namespace TextCryption_1._0
             this.tsb_import,
             this.tsb_close,
             this.tsb_info,
-            this.toolStripButton1});
+            this.tsb_settings});
             this.tls.Name = "tls";
             this.tls.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
@@ -115,18 +113,19 @@ namespace TextCryption_1._0
             this.tsb_close.Name = "tsb_close";
             this.tsb_close.Click += new System.EventHandler(this.tsb_close_Click);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
-            this.toolStripButton1.Name = "toolStripButton1";
-            // 
             // tsb_info
             // 
             this.tsb_info.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             resources.ApplyResources(this.tsb_info, "tsb_info");
             this.tsb_info.Name = "tsb_info";
             this.tsb_info.Click += new System.EventHandler(this.tsb_info_Click);
+            // 
+            // tsb_settings
+            // 
+            this.tsb_settings.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            resources.ApplyResources(this.tsb_settings, "tsb_settings");
+            this.tsb_settings.Name = "tsb_settings";
+            this.tsb_settings.Click += new System.EventHandler(this.tsb_settings_Click);
             // 
             // txb_text
             // 
@@ -137,7 +136,6 @@ namespace TextCryption_1._0
             this.txb_text.Name = "txb_text";
             this.txb_text.TextChanged += new System.EventHandler(this.txb_text_TextChanged);
             this.txb_text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_text_KeyDown);
-            this.txb_text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_text_KeyPress);
             // 
             // ofd_open
             // 
@@ -178,11 +176,6 @@ namespace TextCryption_1._0
             // ofd_textFiles
             // 
             resources.ApplyResources(this.ofd_textFiles, "ofd_textFiles");
-            // 
-            // cld_color
-            // 
-            this.cld_color.Color = System.Drawing.SystemColors.ControlDarkDark;
-            this.cld_color.FullOpen = true;
             // 
             // Form1
             // 
@@ -225,10 +218,8 @@ namespace TextCryption_1._0
         private System.Windows.Forms.Label lbl_titlePassword;
         private System.Windows.Forms.SaveFileDialog sfd_safeAt;
         private System.Windows.Forms.OpenFileDialog ofd_textFiles;
-        private System.Windows.Forms.FontDialog ftd_font;
         private System.Windows.Forms.ToolStripButton tsb_info;
-        private System.Windows.Forms.ColorDialog cld_color;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsb_settings;
     }
 }
 

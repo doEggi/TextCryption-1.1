@@ -21,13 +21,17 @@ namespace TextCryption_1._0
         string password = "";
         string savePath = "";
         string mode = "load";
-        bool blocksound = false;
         string lang = "de";
 
         public Form1()
         {
             InitializeComponent();
-            ftd_font.Font = txb_text.Font;
+            txb_text.Font = Program.font;
+            BackColor = Program.BackColor;
+            tls.BackColor = Program.BackColor;
+            txb_text.BackColor = Program.BackColor;
+            tssl_status.BackColor = Program.BackColor;
+            sts.BackColor = Program.BackColor;
 
             if (!CultureInfo.CurrentCulture.Name.Contains("de"))
                 lang = "en";
@@ -109,6 +113,14 @@ namespace TextCryption_1._0
 
         private void txb_password_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if((Keys)e.KeyChar == Keys.Escape)
+            {
+                pnl_password.Visible = false;
+                txb_text.Focus();
+                tls.Enabled = true;
+                return;
+            }
+
             if (e.KeyChar != 13)
                 return;
 
@@ -125,9 +137,6 @@ namespace TextCryption_1._0
                     fileEnc = File.ReadAllBytes(ofd_open.FileName);
                     fileDec = Decrypt(fileEnc, password);
 
-                    pnl_password.Visible = false;
-                    txb_text.Focus();
-                    tls.Enabled = true;
                     if (fileDec == "|||||PW-ERROR|||||")
                     {
                         if(lang == "de")
@@ -136,6 +145,10 @@ namespace TextCryption_1._0
                             tssl_status.Text = "Wrong password for file: " + Path.GetFileName(ofd_open.FileName);
                         return;
                     }
+
+                    pnl_password.Visible = false;
+                    txb_text.Focus();
+                    tls.Enabled = true;
 
                     fileLoaded = true;
                     savePath = ofd_open.FileName;
@@ -223,18 +236,20 @@ namespace TextCryption_1._0
         {
             if(lang == "de")
                 if(tssl_status.Text.Contains("  *"))
-                    if (MessageBox.Show("Soll die Datei wirklich geschlossen werden?", "Schließen", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    if (MessageBox.Show("Soll die Datei wirklich geschlossen werden?\nSie enthält ungespeicherte Änderungen", "Schließen", MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return;
             if(lang == "en")
                 if (tssl_status.Text.Contains("  *"))
-                    if (MessageBox.Show("Are you sure you want to close the file?", "Close", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to close the file?\nIt contains unsaved changes", "Close", MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return;
 
+#pragma warning disable CS0219 // Variable ist zugewiesen, der Wert wird jedoch niemals verwendet
             byte[] fileEnc = null;
             string fileDec = "";
             bool fileLoaded = false;
             string password = "";
             string savePath = "";
+#pragma warning restore CS0219 // Variable ist zugewiesen, der Wert wird jedoch niemals verwendet
             txb_text.Text = "";
             if(lang == "de")
                 tssl_status.Text = "Keine Datei geöffnet";
@@ -256,8 +271,6 @@ namespace TextCryption_1._0
 
         private void txb_text_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control)
-                blocksound = true;
             if (e.KeyData == (Keys.Control | Keys.S))
                 tsb_save_Click(null, null);
             else if (e.KeyData == (Keys.Control | Keys.Shift | Keys.S))
@@ -268,22 +281,11 @@ namespace TextCryption_1._0
                 tsb_import_Click(null, null);
             else if (e.KeyData == (Keys.Control | Keys.F4))
                 tsb_close_Click(null, null);
+            else if (e.KeyData == (Keys.Control | Keys.E))
+                tsb_settings_Click(null, null);
+            else if (e.KeyData == (Keys.Control | Keys.R))
+                tsb_info_Click(null, null);
 
-        }
-
-        private void txb_text_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (blocksound)
-                e.Handled = true;
-            blocksound = false;
-        }
-
-        private void tsb_font_Click(object sender, EventArgs e)
-        {
-            if (ftd_font.ShowDialog() != DialogResult.OK)
-                return;
-
-            txb_text.Font = ftd_font.Font;
         }
 
         private void txb_text_TextChanged(object sender, EventArgs e)
@@ -323,6 +325,17 @@ namespace TextCryption_1._0
         private void tsb_info_Click(object sender, EventArgs e)
         {
             new Information().ShowDialog();
+        }
+
+        private void tsb_settings_Click(object sender, EventArgs e)
+        {
+            new Settings(lang).ShowDialog();
+            txb_text.Font = Program.font;
+            BackColor = Program.BackColor;
+            tls.BackColor = Program.BackColor;
+            txb_text.BackColor = Program.BackColor;
+            tssl_status.BackColor = Program.BackColor;
+            sts.BackColor = Program.BackColor;
         }
     }
 }
