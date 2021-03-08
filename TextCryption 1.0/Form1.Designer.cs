@@ -38,6 +38,7 @@ namespace TextCryption_1._0
             this.tsb_saveAll = new System.Windows.Forms.ToolStripButton();
             this.tsb_import = new System.Windows.Forms.ToolStripButton();
             this.tsb_close = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsb_info = new System.Windows.Forms.ToolStripButton();
             this.txb_text = new System.Windows.Forms.TextBox();
             this.ofd_open = new System.Windows.Forms.OpenFileDialog();
@@ -49,7 +50,6 @@ namespace TextCryption_1._0
             this.ofd_textFiles = new System.Windows.Forms.OpenFileDialog();
             this.ftd_font = new System.Windows.Forms.FontDialog();
             this.cld_color = new System.Windows.Forms.ColorDialog();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.sts.SuspendLayout();
             this.tls.SuspendLayout();
             this.pnl_password.SuspendLayout();
@@ -80,8 +80,8 @@ namespace TextCryption_1._0
             this.tsb_saveAll,
             this.tsb_import,
             this.tsb_close,
-            this.toolStripButton1,
-            this.tsb_info});
+            this.tsb_info,
+            this.toolStripButton1});
             this.tls.Name = "tls";
             this.tls.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
@@ -115,8 +115,15 @@ namespace TextCryption_1._0
             this.tsb_close.Name = "tsb_close";
             this.tsb_close.Click += new System.EventHandler(this.tsb_close_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
+            this.toolStripButton1.Name = "toolStripButton1";
+            // 
             // tsb_info
             // 
+            this.tsb_info.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             resources.ApplyResources(this.tsb_info, "tsb_info");
             this.tsb_info.Name = "tsb_info";
             this.tsb_info.Click += new System.EventHandler(this.tsb_info_Click);
@@ -176,11 +183,6 @@ namespace TextCryption_1._0
             // 
             this.cld_color.Color = System.Drawing.SystemColors.ControlDarkDark;
             this.cld_color.FullOpen = true;
-            // 
-            // toolStripButton1
-            // 
-            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
-            this.toolStripButton1.Name = "toolStripButton1";
             // 
             // Form1
             // 
