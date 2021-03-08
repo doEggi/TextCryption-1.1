@@ -37,8 +37,8 @@ namespace TextCryption_1._0
             this.tsb_save = new System.Windows.Forms.ToolStripButton();
             this.tsb_saveAll = new System.Windows.Forms.ToolStripButton();
             this.tsb_import = new System.Windows.Forms.ToolStripButton();
-            this.tsb_font = new System.Windows.Forms.ToolStripButton();
             this.tsb_close = new System.Windows.Forms.ToolStripButton();
+            this.tsb_info = new System.Windows.Forms.ToolStripButton();
             this.txb_text = new System.Windows.Forms.TextBox();
             this.ofd_open = new System.Windows.Forms.OpenFileDialog();
             this.pnl_password = new System.Windows.Forms.Panel();
@@ -48,6 +48,8 @@ namespace TextCryption_1._0
             this.sfd_safeAt = new System.Windows.Forms.SaveFileDialog();
             this.ofd_textFiles = new System.Windows.Forms.OpenFileDialog();
             this.ftd_font = new System.Windows.Forms.FontDialog();
+            this.cld_color = new System.Windows.Forms.ColorDialog();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.sts.SuspendLayout();
             this.tls.SuspendLayout();
             this.pnl_password.SuspendLayout();
@@ -64,8 +66,8 @@ namespace TextCryption_1._0
             // 
             // tssl_status
             // 
-            resources.ApplyResources(this.tssl_status, "tssl_status");
             this.tssl_status.Name = "tssl_status";
+            resources.ApplyResources(this.tssl_status, "tssl_status");
             // 
             // tls
             // 
@@ -77,8 +79,9 @@ namespace TextCryption_1._0
             this.tsb_save,
             this.tsb_saveAll,
             this.tsb_import,
-            this.tsb_font,
-            this.tsb_close});
+            this.tsb_close,
+            this.toolStripButton1,
+            this.tsb_info});
             this.tls.Name = "tls";
             this.tls.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
@@ -106,17 +109,17 @@ namespace TextCryption_1._0
             this.tsb_import.Name = "tsb_import";
             this.tsb_import.Click += new System.EventHandler(this.tsb_import_Click);
             // 
-            // tsb_font
-            // 
-            resources.ApplyResources(this.tsb_font, "tsb_font");
-            this.tsb_font.Name = "tsb_font";
-            this.tsb_font.Click += new System.EventHandler(this.tsb_font_Click);
-            // 
             // tsb_close
             // 
             resources.ApplyResources(this.tsb_close, "tsb_close");
             this.tsb_close.Name = "tsb_close";
             this.tsb_close.Click += new System.EventHandler(this.tsb_close_Click);
+            // 
+            // tsb_info
+            // 
+            resources.ApplyResources(this.tsb_info, "tsb_info");
+            this.tsb_info.Name = "tsb_info";
+            this.tsb_info.Click += new System.EventHandler(this.tsb_info_Click);
             // 
             // txb_text
             // 
@@ -169,6 +172,16 @@ namespace TextCryption_1._0
             // 
             resources.ApplyResources(this.ofd_textFiles, "ofd_textFiles");
             // 
+            // cld_color
+            // 
+            this.cld_color.Color = System.Drawing.SystemColors.ControlDarkDark;
+            this.cld_color.FullOpen = true;
+            // 
+            // toolStripButton1
+            // 
+            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
+            this.toolStripButton1.Name = "toolStripButton1";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -180,6 +193,7 @@ namespace TextCryption_1._0
             this.Controls.Add(this.sts);
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.sts.ResumeLayout(false);
             this.sts.PerformLayout();
             this.tls.ResumeLayout(false);
@@ -209,8 +223,10 @@ namespace TextCryption_1._0
         private System.Windows.Forms.Label lbl_titlePassword;
         private System.Windows.Forms.SaveFileDialog sfd_safeAt;
         private System.Windows.Forms.OpenFileDialog ofd_textFiles;
-        private System.Windows.Forms.ToolStripButton tsb_font;
         private System.Windows.Forms.FontDialog ftd_font;
+        private System.Windows.Forms.ToolStripButton tsb_info;
+        private System.Windows.Forms.ColorDialog cld_color;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

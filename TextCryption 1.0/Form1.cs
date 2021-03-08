@@ -56,6 +56,7 @@ namespace TextCryption_1._0
 
             tls.Enabled = false;
             pnl_password.Visible = true;
+            txb_password.Focus();
 
             if(lang == "de")
                 tssl_status.Text = "Passwort eingeben und mit ENTER bestätigen";
@@ -125,6 +126,7 @@ namespace TextCryption_1._0
                     fileDec = Decrypt(fileEnc, password);
 
                     pnl_password.Visible = false;
+                    txb_text.Focus();
                     tls.Enabled = true;
                     if (fileDec == "|||||PW-ERROR|||||")
                     {
@@ -164,6 +166,7 @@ namespace TextCryption_1._0
                     fileEnc = Encrypt(fileDec, password);
 
                     pnl_password.Visible = false;
+                    txb_text.Focus();
                     tls.Enabled = true;
 
                     fileLoaded = true;
@@ -181,6 +184,8 @@ namespace TextCryption_1._0
                         MessageBox.Show("Das Passwort muss länger als 4 Zeichen sein!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                         MessageBox.Show("The password must be longer than 4 characters!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
                 }
 
                 mode = "load";
@@ -211,6 +216,7 @@ namespace TextCryption_1._0
                 return;
 
             pnl_password.Visible = true;
+            txb_password.Focus();
         }
 
         private void tsb_close_Click(object sender, EventArgs e)
@@ -307,6 +313,16 @@ namespace TextCryption_1._0
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            txb_text.Focus();
+        }
+
+        private void tsb_info_Click(object sender, EventArgs e)
+        {
+            new Information().ShowDialog();
         }
     }
 }
