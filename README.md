@@ -1,4 +1,4 @@
-# TextCryption-1.1
+# TextCryption-1.2
 
 
 TextCryption is a program that is used to use encrypted text files.
