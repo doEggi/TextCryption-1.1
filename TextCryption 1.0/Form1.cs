@@ -32,6 +32,7 @@ namespace TextCryption_1._0
             txb_text.BackColor = Program.BackColor;
             tssl_status.BackColor = Program.BackColor;
             sts.BackColor = Program.BackColor;
+            txb_password.BackColor = Program.BackColor;
 
             if (!CultureInfo.CurrentCulture.Name.Contains("de"))
                 lang = "en";
@@ -336,6 +337,7 @@ namespace TextCryption_1._0
             txb_text.BackColor = Program.BackColor;
             tssl_status.BackColor = Program.BackColor;
             sts.BackColor = Program.BackColor;
+            txb_password.BackColor = Program.BackColor;
         }
     }
 }
